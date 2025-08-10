@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>
+        L_NO_TOUCH = false;
+        L_DISABLE_3D = false;
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+        html, body { height: 100%; margin: 0; padding: 0; }
+        #map_f3c0b459cbf133c08a8064172ccad06a { height: 100vh; width: 100vw; }
+    </style>
+</head>
+<body>
+    <div id="map_f3c0b459cbf133c08a8064172ccad06a"></div>
+<script>
+    var map_f3c0b459cbf133c08a8064172ccad06a = L.map("map_f3c0b459cbf133c08a8064172ccad06a", {
+        center: [30.0, 0.0],
+        crs: L.CRS.EPSG3857,
+        zoom: 2,
+        zoomControl: true,
+        preferCanvas: false,
+    });
+
+    L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
+        attribution: "&copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors &copy; <a href='http://cartodb.com/attributions'>CartoDB</a>",
+        maxZoom: 18
+    }).addTo(map_f3c0b459cbf133c08a8064172ccad06a);
+
+    var locations = [
+        [52.1326, 5.2913, "Netherlands"],
+        [46.8182, 8.2275, "Switzerland"],
+        [47.5162, 14.5501, "Austria"],
+        [37.0902, -95.7129, "United States"],
+        [45.1, 15.2, "Croatia"],
+        [43.9159, 17.6791, "Bosnia and Herzegovina"],
+        [42.6026, 20.903, "Kosovo"],
+        [41.6086, 21.7453, "North Macedonia"],
+        [42.7087, 19.3744, "Montenegro"],
+        [41.1533, 20.1683, "Albania"],
+        [56.1304, -106.3468, "Canada"]
+    ];
+
+    locations.forEach(function(loc) {
+        L.circleMarker([loc[0], loc[1]], {
+            color: "#FF7F50",
+            fillColor: "#FF7F50",
+            fillOpacity: 0.8,
+            radius: 8,
+            weight: 3
+        }).addTo(map_f3c0b459cbf133c08a8064172ccad06a).bindPopup(loc[2]);
+    });
+</script>
+</body>
+</html>
